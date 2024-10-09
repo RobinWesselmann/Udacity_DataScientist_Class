@@ -12,6 +12,7 @@ scikit-learn = "*"
 ipykernel = "*"
 haversine = "*"
 folium = "*"
+xgboost = "*"
 
 [dev-packages]
 
