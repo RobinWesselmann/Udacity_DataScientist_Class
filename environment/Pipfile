@@ -13,6 +13,7 @@ ipykernel = "*"
 haversine = "*"
 folium = "*"
 xgboost = "*"
+pgeocode = "*"
 
 [dev-packages]
 
