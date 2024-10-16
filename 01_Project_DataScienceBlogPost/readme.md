@@ -18,8 +18,13 @@ The present project is a part of the Data Scientist Nanodegree Program I partici
   3) Which factors have an influence on the price in which intensity? </br>
 
 ## File Description <a name="files"></a>
-
-
+**Analysis_Airbnb.ipynb**: Notebook with the project's data analysis </br>
+**data/boston_airbnb/listings.csv**: Airbnb scraped listing data for boston (2016). </br>
+**data/Inside Airbnb Data Dictionary.xlsx**: Feature description of the different features in the dataset. </br>
+**img/**: Image data present in the notebook / readme. </br>
 
 ## Results <a name="results"></a>
+The findings can be found in a blog post [here](dummy)
 
+## Licensing, Authors <a name="licensing"></a>
+The credit of the data must be given to Airbnb for the data and Kaggle to provide the data for the community. The data is available [here](https://www.kaggle.com/datasets/airbnb/boston/data) 
