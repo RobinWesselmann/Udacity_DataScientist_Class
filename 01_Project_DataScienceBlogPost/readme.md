@@ -24,7 +24,7 @@ The present project is a part of the Data Scientist Nanodegree Program I partici
 **img/**: Image data present in the notebook / readme. </br>
 
 ## Results <a name="results"></a>
-The findings can be found in a blog post [here](dummy)
+The findings can be found in a blog post [here](https://medium.com/@rb.wesselmann/im-shipping-up-to-boston-an-airbnb-analysis-cf15e1802ed9)
 
 ## Licensing, Authors <a name="licensing"></a>
 The credit of the data must be given to Airbnb for the data and Kaggle to provide the data for the community. The data is available [here](https://www.kaggle.com/datasets/airbnb/boston/data) 
