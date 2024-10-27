@@ -1,4 +1,4 @@
-<img src="../data/img/e-auto-ladestation-101.jpg" style="width:50%;height=50%"/>
+<img src="data/img/e-auto-ladestation-101.jpg" style="width:50%;height=50%"/>
 <hr>
 
 # Setup a webapp with Flask for a Data Dashboard
