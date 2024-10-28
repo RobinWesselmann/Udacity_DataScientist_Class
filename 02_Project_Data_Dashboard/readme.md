@@ -26,8 +26,8 @@ Concerning the data analysis, I chose a dataset of the german government to get 
 **data/img/**: Image data present in the notebook / readme. </br>
 
 ## Results <a name="results"></a>
-This is a snapshot of the dashboard:
-<img src="data/img/snap_dashboard.PNG" style="width:50%;height:50%">
+This is a snapshot of the dashboard:<br>
+<img src="data/img/snap_dashboard.PNG">
 
 ## Licensing, Authors <a name="licensing"></a>
 The credit of the data must be given to the German Government. The data is available [here](https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/E-Mobilitaet/Ladesaeulenkarte/start.html) 
