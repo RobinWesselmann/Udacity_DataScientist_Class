@@ -1,5 +1,10 @@
 from flask import Flask
 from flask import render_template
+import pandas as pd
+import plotly.graph_objects as go
+import plotly
+import json
+from data_wrangling import prepare_figures
 
 app = Flask(__name__, template_folder='../frontend')
 
@@ -7,15 +12,13 @@ app = Flask(__name__, template_folder='../frontend')
 @app.route("/index")
 def home():
 
-    return render_template("index.html")
+    figures = prepare_figures()
 
-@app.route("/Descriptive_Analysis")
-def decriptive_analysis():
-    return render_template("Descriptive_Analysis.html")
+    ids = [f"figures-{i}" for i, _ in enumerate(figures)]
 
-@app.route("/About")
-def about():
-    return render_template("About.html")
+    figures_JSON = json.dumps(figures, cls = plotly.utils.PlotlyJSONEncoder)
+
+    return render_template("index.html", ids=ids, figuresJSON=figures_JSON)
 
 
 
