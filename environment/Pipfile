@@ -89,6 +89,10 @@ xyzservices = "==2024.9.0"
 zipp = "==3.20.2"
 plotly = "*"
 nbformat = "*"
+kaleido = "*"
+flask = "*"
+path = "*"
+pathlib = "*"
 
 [dev-packages]
 
