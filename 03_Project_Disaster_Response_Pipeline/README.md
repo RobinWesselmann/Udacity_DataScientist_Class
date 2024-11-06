@@ -1,14 +1,30 @@
-# Disaster Response Pipeline Project
+# Project Disaster Response Pipeline
+This project is part of the Data Scientist Nanodegree Program.
 
-### Instructions:
-1. Run the following commands in the project's root directory to set up your database and model.
+### Table of Contents
+1. [Project Motivation](#motivation)
+2. [File Description](#files)
+3. [Results](#results)
+4. [Licensing, Authors](#licensing)
 
-    - To run ETL pipeline that cleans data and stores in database
-        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
-    - To run ML pipeline that trains classifier and saves
-        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+## Project Motivation <a name="motivation"></a>
 
-2. Run the following command in the app's directory to run your web app.
-    `python run.py`
+The present project is a part of the Nano-degree program of Udacity. The task is to setup:
+* an ETL Pipeline (Extract, transform, load) incl. cleaning + storing into SQLite db
+* a machine learning Pipeline training a classifier
+* a Flask Web App visualizing the results incl. flexible file path input possibility
 
-3. Go to http://0.0.0.0:3001/
+The data the pipeline should be built on is about the messages sent out within a disaster situation (e.g. a hurricane).
+The messages themselves are very precious to disaster responsibles (e.g. a responsible for water supply or fire fighter etc.) to efficiently organize help for the potential victims and people affected by the event. But the amount of messages and the unstructured nature of the data makes it difficult for the repsonsibles to grasp efficiently the most important for their area of responsibily. 
+So in this project we're building as mentioned above a classifier classifying the messages into different categories to make it easier to filter the most important content for the responsibles. 
+
+## File Description <a name="files"></a>
+**app/**: Frontend for the visualization of the results </br>
+**data/**: Data relevant for the given usecase and a script to preprocess the data. </br>
+**models/**: Script to train the mentioned model within the pipeline and store it in a pkl file. </br>
+
+## Results <a name="results"></a>
+to be filled <br>
+
+## Licensing, Authors <a name="licensing"></a>
+The credit for the data goes to the company figure eight.
