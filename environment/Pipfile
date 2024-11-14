@@ -93,6 +93,8 @@ kaleido = "*"
 flask = "*"
 path = "*"
 pathlib = "*"
+sqlalchemy = "*"
+nltk = "*"
 
 [dev-packages]
 
