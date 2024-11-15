@@ -2,15 +2,11 @@ import json
 import plotly
 import pandas as pd
 
-from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
-
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
-#from sklearn.externals import joblib
 import joblib
 import sys
+from prepare_figures import prepare_figures
 
 sys.path.append("../models")
 
@@ -32,40 +28,18 @@ model = joblib.load("../models/classifier.pkl")
 @app.route('/index')
 def index():
     
-    # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
-    genre_counts = df.groupby('genre').count()['message']
-    genre_names = list(genre_counts.index)
-    
-    # create visuals
-    # TODO: Below is an example - modify to create your own visuals
-    graphs = [
-        {
-            'data': [
-                Bar(
-                    x=genre_names,
-                    y=genre_counts
-                )
-            ],
+    #prepare figures
+    figs = prepare_figures(df)
 
-            'layout': {
-                'title': 'Distribution of Message Genres',
-                'yaxis': {
-                    'title': "Count"
-                },
-                'xaxis': {
-                    'title': "Genre"
-                }
-            }
-        }
-    ]
-    
     # encode plotly graphs in JSON
-    ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
-    graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
-    
+    ids = [f"figures-{i}" for i, _ in enumerate(figs)]
+
+    print(ids)
+
+    graphJSON = json.dumps(figs, cls=plotly.utils.PlotlyJSONEncoder)
+
     # render web page with plotly graphs
-    return render_template('master.html', ids=ids, graphJSON=graphJSON)
+    return render_template('visualizations.html', ids=ids, figuresJSON=graphJSON)
 
 
 # web page that handles user query and displays model results
@@ -86,9 +60,15 @@ def go():
     )
 
 
+@app.route('/text_classification_app')
+def classifier_app():
+    
+    # render web page with plotly graphs
+    return render_template('classifier_app.html') 
+
+
 def main():
     app.run(host='0.0.0.0', port=3001, debug=True)
-
 
 if __name__ == '__main__':
     main()
