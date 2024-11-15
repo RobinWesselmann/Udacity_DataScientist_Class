@@ -1,4 +1,4 @@
-<img src="./data/img/title_img.PNG"/>
+<img src="./data/img/title_img.png"/>
 <hr>
 
 # Project Disaster Response Pipeline
