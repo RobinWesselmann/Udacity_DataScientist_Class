@@ -4,7 +4,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem.wordnet import WordNetLemmatizer
 import re
 
-nltk.download(['punkt', 'punkt_tab', 'wordnet', 'averaged_perceptron_tagger'])
+nltk.download(['punkt', 'punkt_tab', 'wordnet', 'averaged_perceptron_tagger'], quiet=True)
 
 def tokenize(text):
     """Principal cleaning steps (substitute urls, normalization, delete unnecessary spaces),

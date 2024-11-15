@@ -12,17 +12,14 @@ import re
 from utils import tokenize
 
 from sklearn.pipeline import Pipeline, FeatureUnion
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.metrics import classification_report
 
-nltk.download(['punkt', 'punkt_tab', 'wordnet', 'averaged_perceptron_tagger'])
-
-import warnings
 import pickle
-
+import warnings
 warnings.filterwarnings("ignore")
 
 def load_data(database_filepath):
@@ -45,7 +42,7 @@ def load_data(database_filepath):
 
     return X, y, y.columns.tolist()
 
-def build_model(clf = RandomForestClassifier()):
+def build_model(clf = AdaBoostClassifier(algorithm = "SAMME")):
     """Build a pipeline containing CountVectorizer incl. tokenizer, TfidfTransformer, classifier
 
     Args:
@@ -58,14 +55,21 @@ def build_model(clf = RandomForestClassifier()):
     pipeline = Pipeline([
         ("features", FeatureUnion([
             ("text_pipeline", Pipeline([
-                ("vect", CountVectorizer(tokenizer=tokenize)),
+                ("vect", CountVectorizer(tokenizer=tokenize, token_pattern=None)),
                 ("tfidf", TfidfTransformer())
             ]))
         ],n_jobs=-1)),
-        ("clf", MultiOutputClassifier(clf,n_jobs=-1))
+        ("clf", MultiOutputClassifier(estimator = clf,n_jobs=-1))
     ])
 
-    return pipeline
+    parameters = {
+        'clf__estimator__learning_rate':[0.5, 1.0],
+        'clf__estimator__n_estimators':[10,20]
+    }
+
+    cv = GridSearchCV(estimator=pipeline, param_grid=parameters, cv=5, n_jobs = -1, verbose = 3)
+
+    return cv
 
 def evaluate_model(model, X_test, Y_test, category_names):
     """Evaluate the model and print out the sklearn classification_report
@@ -118,6 +122,7 @@ def main():
               'as the first argument and the filepath of the pickle file to '\
               'save the model to as the second argument. \n\nExample: python '\
               'train_classifier.py ../data/DisasterResponse.db classifier.pkl')
+    
 
 if __name__ == '__main__':
     main()
