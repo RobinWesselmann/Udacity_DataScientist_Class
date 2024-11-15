@@ -1,11 +1,15 @@
+<img src="./data/img/title_img.PNG"/>
+<hr>
+
 # Project Disaster Response Pipeline
 This project is part of the Data Scientist Nanodegree Program.
 
 ### Table of Contents
 1. [Project Motivation](#motivation)
 2. [File Description](#files)
-3. [Results](#results)
-4. [Licensing, Authors](#licensing)
+3. [Installation / Setup](#installation)
+4. [Impressions of the web app](#screenshots)
+5. [Licensing, Authors](#licensing)
 
 ## Project Motivation <a name="motivation"></a>
 
@@ -30,13 +34,19 @@ Beside these concrete project requirements concerning the data processing, versi
 **data/**: Data relevant for the given usecase and a script to preprocess the data. </br>
 **models/**: Script to train the mentioned model within the pipeline and store it in a pkl file. The pkl file is not stored within github due to size constraints.</br>
 
-## Installation / Setup <a name="results"></a>
+## Installation / Setup <a name="installation"></a>
 1. Setup the virtual environment in the environment folder via pipenv  <br>
 2. Run within the `data/`- folder the following command to clean the data & store the results in a respective database:
 `python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db`
 3. Run within the `models/`- folder the following commnad to train the model with the cleaned data, choose the best hyperparameters via Grid-Search and store the model in a pkl-file for further use: `python train_classifier.py ../data/DisasterResponse.db classifier.pkl`
 4. Run the following command within the `app/`- folder to run the web app: `python run.py`
 5. Go in your browser to the following adress: http://127.0.0.1:3001
+
+## Impressions of the web app <a name="screenshots"></a>
+<img src="./data/img/snapshot_visualizations.PNG"/>
+<hr>
+<img src="./data/img/snapshot_classification.PNG"/>
+<hr>
 
 ## Licensing, Authors <a name="licensing"></a>
 The credit for the data goes to the company figure eight.
