@@ -33,7 +33,6 @@ def clean_data(df):
         df_categories[col] = df_categories[col].str.split("-").str[1]
 
     #transform to binary 
-    df_categories = df_categories.drop(df_categories[df_categories["related"] == 2].index, axis = 0)
     df_categories = df_categories.astype("int")
     
     #drop categories column from df
@@ -42,8 +41,9 @@ def clean_data(df):
     #combine expanded df_categories & msg data (df)
     df_expanded = pd.concat([df, df_categories], axis = 1)
 
-    #drop duplicates
+    #drop related = 2 and duplicates
     df_clean= df_expanded.drop_duplicates()
+    df_clean = df_clean.drop(df_clean[df_clean["related"] == 2].index, axis = 0)
 
     return df_clean
 
