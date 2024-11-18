@@ -48,8 +48,16 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    """Saves the given dataframe in the table 'disaster_response_tbl' in the Database 
+    under the provided filepath / filename or creates (if not existant) a new database with this table under the 
+    given filepath
+
+    Args:
+        df (pandas.DataFrame): dataframe containing the cleaned data
+        database_filename (str): filepath of the database
+    """
     engine = create_engine(f'sqlite:///{database_filename}') #'sqlite:///InsertDatabaseName.db'
-    df.to_sql('disaster_reponse_tbl', engine, index=False)  
+    df.to_sql('disaster_reponse_tbl', engine, index=False, if_exists = "replace")  
 
 
 def main():
