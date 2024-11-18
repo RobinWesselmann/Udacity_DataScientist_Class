@@ -33,6 +33,7 @@ def clean_data(df):
         df_categories[col] = df_categories[col].str.split("-").str[1]
 
     #transform to binary 
+    df_categories = df_categories.drop(df_categories[df_categories["related"] == 2].index, axis = 0)
     df_categories = df_categories.astype("int")
     
     #drop categories column from df
@@ -84,6 +85,7 @@ def main():
               'to as the third argument. \n\nExample: python process_data.py '\
               'disaster_messages.csv disaster_categories.csv '\
               'DisasterResponse.db')
+
 
 if __name__ == '__main__':
     main()
