@@ -7,9 +7,7 @@ This Hypothesis Test Case Study is non-obligatory part of the Data Scientist Nan
 ### Table of Contents
 1. [Project Motivation](#motivation)
 2. [File Description](#files)
-3. [Installation / Setup](#installation)
-4. [Impressions of the web app](#screenshots)
-5. [Licensing, Authors](#licensing)
+3. [Licensing, Authors](#licensing)
 
 ## Project Motivation <a name="motivation"></a>
 
