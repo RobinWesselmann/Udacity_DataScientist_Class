@@ -1,4 +1,4 @@
-<img src="../data/img/starbucks_logo.jpg">
+<img src="../data/img/starbucks_logo.png">
 <hr>
 
 # Project A/B Testing at Starbucks
