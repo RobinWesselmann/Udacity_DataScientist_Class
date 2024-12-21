@@ -1,2 +1,4 @@
 03_Project_Disaster_Response_Pipeline/models/classifier.pkl
-07_Project_Capstone_Arvato-Bertelsmann/data/*.csv
+07_Project_Capstone_Arvato-Bertelsmann/data/customer_segmentation/*.csv
+07_Project_Capstone_Arvato-Bertelsmann/data/modeling/*.csv
+environment/.venv
