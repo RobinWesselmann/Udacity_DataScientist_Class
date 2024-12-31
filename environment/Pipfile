@@ -11,6 +11,8 @@ ipykernel = "*"
 seaborn = "*"
 openpyxl = "*"
 scipy = "*"
+jinja2 = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
