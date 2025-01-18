@@ -12,7 +12,8 @@ seaborn = "*"
 openpyxl = "*"
 scipy = "*"
 jinja2 = "*"
-scikit-learn = "*"
+scikit-learn = "1.5.2"
+imblearn = "*"
 
 [dev-packages]
 
