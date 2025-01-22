@@ -54,7 +54,7 @@ The project was made up of two parts:
 **Unsupervised Learning:**
 
 The general goal of this section is to find relevant customer cluster for the client, a mail-order company. </br>
-The chosen instrument to achieve this clustering is the K-Means Clustering algorithm. In order to avoid the curse of dimensionality a PCA is performed before the clustering step to reduce the number of features (around 350). The goal was to keep 80% of the information and the number of features could be reduced from 350 to 151 features. 
+The chosen instrument to achieve this clustering is the K-Means Clustering algorithm. In order to avoid the curse of dimensionality a PCA is performed before the clustering step to reduce the number of features (around 350). The goal was to keep 80% of the information and the number of features could be reduced from 350 to 127 features (incl. preprocessing steps). 
 The K-Means algorithm has been performed on this reduced dataset in a range from k=3 to k=29 cluster-centroids and the optimal "k" has been chosen by using the elbow-method. 
 The steps have been documented and the relevant topics explained along the analysis.
 
@@ -75,11 +75,15 @@ For the supervised part of the project, the performance of the respective models
 **Results**
 
 **Unsupervised Learning**
-The unsupervised learning part aimed to identify valuable cluster of individuals for the company. 
-There were two significantly overrepresented cluster: Cluster 7 and 12. 
-* the cluster 7 seems to embody individuals of advanced age (~ > 70 years old), living with around 2 persons in a rural area (around 20-30 km from the next city) without children, but earning a high income focusing concerning the financial perspective to be prepared for the future. Moreover the individuals belonging to this cluster are average religious, average family persons, average cultural minded, less critical minded, average material minded and average rational minded
 
-* the cluster 12 seems to embody individuals of mid age (~ 55), living with around 4 persons in a very rural area (around 30-50 km from the next city) without children, earning a high income focusing on owning an own house. The individuals belonging to this cluster have a low affinity to religion, a low affinity to family, an average to high affinity to critical thinking, a low affinity cultural topics, an average affinity to materialism and not really rational minded
+
+The unsupervised learning part aimed to identify valuable cluster of individuals for the company. 
+There were three significantly overrepresented clusters: Cluster 5, 7 and 8. 
+* the cluster 5 seems to embody individuals of advanced age (~ 70 years old), living rather alone near the next city center (10-20 km) without children, earning a low income with the financial focus to own a house. Moreover the person in this cluster are not religous, not very close to the family, average critical minded, not really cultural minded, with a low affinity to material and low rational minded. 
+
+* the cluster 7 seems to embody individuals of high age (1935-1939 birth), living rather with another person in a household farer away from the next city center (40-50 km), earning a high to average income with the financial focus to be preprared for the future. Concerning the general attitude of these individuals: They are highly religious, high to average close to the family, average critical minded, high to average cultural minded, highly material minded and highly rational minded.
+
+* the cluster 8 seems to embody individuals of mid age (~55), living with 2-3 persons in a more rural area (around 30-50 km from the next city center) with 0-1 children, earning an average income with the financial focus to own a house. The persons in this cluster are rather not religious and neither family-near. They are average critical minded, with a low affinity to cultural topics, an average affinity to materialism and average rational.
 
 **Supervised Learning**
 
@@ -92,32 +96,33 @@ In the first part of the section, the four models have been tested concerning th
   </tr>
   <tr>
     <td>Naive Classifier</td>
-    <td>0.49</td>
+    <td>0.52</td>
   </tr>
   <tr>
     <td>RandomForest Classifier</td>
-    <td>0.71</td>
+    <td>0.72</td>
   </tr>
   <tr>
     <td>Logistic Regression</td>
-    <td>0.59</td>
+    <td>0.57</td>
   </tr>
   <tr>
     <td>AdaBoostClassifier</td>
-    <td>0.68</td>
+    <td>0.67</td>
   </tr>
   <tr>
     <td>XGBoostClassifier</td>
-    <td>0.73</td>
+    <td>0.72</td>
   </tr>
 </table>
 
-Following these scores, XGBoostClassifier was chosen for further hyperparameter training and the optimal parameter combination resulted in:</br>
+Following these scores, XGBoostClassifier was chosen due to its huge potential for further hyperparameter training and the optimal parameter combination resulted in:</br>
 
 {'model__colsample_bytree': 1.0,
  'model__learning_rate': 0.01,
- 'model__max_depth': 5,
+ 'model__max_depth': 7,
  'model__n_estimators': 200,
+ 'model__objective': 'binary:logistic',
  'model__subsample': 0.6,
  'model__tree_method': 'gpu_hist'}
 
@@ -140,6 +145,9 @@ The following averaged CV Scores have been reached:
     <td>0.76</td>
   </tr>
 </table>
+
+**ACHTUNG An article for a technical audience can be found following this blog post link ############################.**
+
 
 ## Licensing, Authors <a name="licensing"></a>
 The credit for the data goes to Udacity & Arvato Financial Solutions.
