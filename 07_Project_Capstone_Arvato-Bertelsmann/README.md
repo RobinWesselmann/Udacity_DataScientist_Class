@@ -61,11 +61,24 @@ The steps have been documented and the relevant topics explained along the analy
 **Supervised Learning:**
 
 In the supervised learning part a standardized preprocessing pipeline has been established and four different models (logistic regression, RandomForest, Adaboost, XGBoost) as well as a naive classifier have been tested for the experimentation. </br>
-Due to the fact that the dataset shows a quite strong imbalance concerning the target variable, the "ROC_AUC" metric has been chosen. 
-In a first step all 4 (or 5) models have been trained within the pipeline and the XGBoost performed best (0.73). 
-Hence the XGBoost model as best performing model has been refined in a hyperparameter tuning phase to improve the performance of the model even further. For this task, GridSearchCV was used to find the best hyperparameter combination and it was possible to improve the performance to a ROC_AUC of 0.76.
+Due to the fact that the dataset shows a quite strong imbalance concerning the target variable, the "ROC_AUC" metric has been chosen for evaluation. 
 
-As the test set is provided without any correct y values and the kaggle competition doesn't allow anymore for any submission the model tuning / testing has been performed via Crossvalidation on the train set.
+The procedure for the supervised learning can be resumed as follows:
+
+<img src = 'data/img/procedure_supervised_learning.PNG'/>
+
+First step: Choose a model / models
+  All 4 (or 5) models have been trained and crossvalidated within the pipeline and the XGBoost (0.72) and the RandomForest (0.71) performed best. So they were chosen for the second phase, the hyper parameter tuning.
+
+Second step: Hyperparameter Tuning
+  Within the course a test set is provided which can be used to test the final model and submit the result to kaggle. Due to the fact that a kaggle submission isn't possible anymore and in the forums of udacity a evaluation on the train set is recommanded we evaluate the performance on the train set.
+
+  Hence, first of all a test set has been separated from the train data set to provide unseen data for later evaluation phase. Then for both models the best hyperparameters are determined via GridSearch. 
+
+Third step: Model Evaluation
+  With the determined Hyperparameter the models are trained on the whole training set of step 2 and the test set we separated in step 2 serves as evaluation data.
+
+The XGBoost outperformed the RandomForest model (Roc_Auc Score: 0.79 vs 0.75) and has been chosen.
 
 **Metrics** 
 
@@ -96,19 +109,19 @@ In the first part of the section, the four models have been tested concerning th
   </tr>
   <tr>
     <td>Naive Classifier</td>
-    <td>0.52</td>
+    <td>0.51</td>
   </tr>
   <tr>
     <td>RandomForest Classifier</td>
-    <td>0.72</td>
+    <td>0.71</td>
   </tr>
   <tr>
     <td>Logistic Regression</td>
-    <td>0.57</td>
+    <td>0.6</td>
   </tr>
   <tr>
     <td>AdaBoostClassifier</td>
-    <td>0.67</td>
+    <td>0.68</td>
   </tr>
   <tr>
     <td>XGBoostClassifier</td>
@@ -116,37 +129,48 @@ In the first part of the section, the four models have been tested concerning th
   </tr>
 </table>
 
-Following these scores, XGBoostClassifier was chosen due to its huge potential for further hyperparameter training and the optimal parameter combination resulted in:</br>
+Following these scores, XGBoostClassifier and RandomForestClassifier were chosen due for hyperparameter tuning:</br>
 
-{'model__colsample_bytree': 1.0,
+Model 1: Best parameters XGB 
+{'model__colsample_bytree': 0.8,
  'model__learning_rate': 0.01,
- 'model__max_depth': 7,
+ 'model__max_depth': 5,
  'model__n_estimators': 200,
  'model__objective': 'binary:logistic',
  'model__subsample': 0.6,
  'model__tree_method': 'gpu_hist'}
 
+ Model 2: Best Parameters RandomForest
+ {'model__max_depth': 10,
+ 'model__max_features': 'sqrt',
+ 'model__min_samples_leaf': 2,
+ 'model__n_estimators': 100}
+
 The following averaged CV Scores have been reached:
 <table>
   <tr>
-    <th>Metric</th>
-    <th>Value</th>
+    <th>Metric </th>
+    <th>XGBClassifier</th>
+    <th>RandomForest</th>
   </tr>
   <tr>
-    <td>Precision</td>
-    <td>0.52</td>
+    <td>AucScore</td>
+    <td>0.79</td>
+    <td>0.75</td>
   </tr>
   <tr>
     <td>Recall</td>
     <td>0.76</td>
+    <td>0.71</td>
   </tr>
   <tr>
-    <td>ROC AUC Score</td>
-    <td>0.76</td>
+    <td>Precision</td>
+    <td>0.03</td>
+    <td>0.03</td>
   </tr>
 </table>
 
-**ACHTUNG An article for a technical audience can be found following this blog post link ############################.**
+**An article for a technical audience can be found following this blog post link [here](https://medium.com/@rb.wesselmann/the-great-art-of-learning-is-to-understand-customer-segmentation-udacity-capstone-project-2619c204d708)**
 
 
 ## Licensing, Authors <a name="licensing"></a>
